@@ -1,0 +1,121 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5e9e2;
+}
+
+/* Page Structure */
+.page {
+    display: none; /* Initially hide all pages */
+    padding: 20px;
+}
+
+.page.active {
+    display: block; /* Show the active page */
+}
+
+/* Header Styles */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #6b4f3d;
+    padding: 10px;
+    color: white;
+}
+
+header input {
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    width: 60%;
+}
+
+.icon {
+    cursor: pointer;
+    font-size: 24px;
+}
+
+/* Form Styles */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+input, button {
+    margin: 10px 0;
+    padding: 10px;
+    width: 80%;
+    border: 1px solid #c5b2a3;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #6b4f3d;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #5b3d2e;
+}
+
+/* Sections on Home Page */
+section {
+    margin: 20px 0;
+}
+
+h2 {
+    color: #5b3d2e;
+}
+
+p {
+    color: #5b3d2e;
+}
+
+/* Cart Page Styles */
+#cartPage ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#cartPage ul li {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Checkout Page */
+#checkoutPage button {
+    width: 100%;
+    margin: 10px 0;
+}
+
+/* Confirmation Page */
+#confirmationPage p {
+    text-align: center;
+}
+
+/* Back Button */
+button.back {
+    width: 80%;
+    background-color: #ccc;
+    color: black;
+    border: 1px solid #888;
+}
+
+button.back:hover {
+    background-color: #bbb;
+}
+
+/* Profile Update Notification */
+.notification {
+    text-align: center;
+    color: green;
+    font-size: 16px;
+    margin: 20px 0;
+}
