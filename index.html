@@ -3,83 +3,289 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cafe App</title>
+    <title>Kaffee-Inn</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
-    <!-- Login Page -->
-    <div id="loginPage" class="page">
-        <h1>KAFE-IN</h1>
-        <form id="loginForm">
-            <input type="email" id="email" placeholder="Email" required>
-            <input type="password" id="password" placeholder="Password" required>
-            <button type="button" id="loginBtn">Login</button>
-            <button type="button" id="signUpBtn">Sign Up</button>
+    <div id="auth-container" class="container">
+        <img src="kaffee-inn-logo.png" alt="Kaffee-Inn Logo" class="logo">
+        <h1 id="form-title">Sign In</h1>
+        <p id="form-subtitle">We've already met!</p>
+        <form id="signin-form">
+            <input type="email" id="signin-email" placeholder="Email" required>
+            <div class="forgot-password">
+                <a href="#">Forgot password?</a>
+            </div>
+            <div class="password-container">
+                <input type="password" id="signin-password" placeholder="Password" required>
+                <span class="toggle-password" onclick="togglePassword('signin-password')">👁️</span>
+            </div>
+            <button type="submit" class="submit-btn">Sign In</button>
         </form>
+        <form id="signup-form" style="display: none;">
+            <input type="tel" id="signup-phone" placeholder="+91 9841012345" required>
+            <div class="password-container">
+                <input type="password" id="signup-password" placeholder="Password" required>
+                <span class="toggle-password" onclick="togglePassword('signup-password')">👁️</span>
+            </div>
+            <div class="password-container">
+                <input type="password" id="signup-repassword" placeholder="Re-enter Password" required>
+                <span class="toggle-password" onclick="togglePassword('signup-repassword')">👁️</span>
+            </div> 
+            <button type="submit" class="submit-btn">Sign Up</button>
+        </form>
+        <div id="toggle-form">
+            <span id="toggle-text">Don't have an account?</span> <a href="#" id="toggle-link">Sign Up</a>
+        </div>
+        <div class="social-icons">
+            <a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="google"><i class="fab fa-google"></i></a>
+        </div>
     </div>
 
-    <!-- Home Page -->
-    <div id="homePage" class="page hidden">
+    <div id="dashboard-container" style="display: none;">
         <header>
-            <input type="text" id="search" placeholder="Search coffee...">
-            <div id="profileIcon" class="icon" onclick="openProfile()">👤</div>
-            <div id="cartIcon" class="icon" onclick="openCart()">🛒</div>
+            <div class="user-info">
+                <img src="user-avatar.png" alt="User Avatar" class="avatar">
+                <span id="user-greeting">Hello, Brewer!</span>
+            </div>
+            <img src="kaffee-inn-logo.png" alt="Kaffee-Inn Logo" class="logo">
+            <div class="header-actions">
+                <div class="notification-container">
+                    <button class="notification-btn"><i class="fas fa-bell"></i></button>
+                    <div class="notification-panel" style="display: none;">
+                        <p>No Notifications For Now</p>
+                    </div>
+                </div>
+                <button class="cart-btn"><i class="fas fa-shopping-cart"></i></button>
+                <button class="menu-toggle"><i class="fas fa-bars"></i></button>
+            </div>
+            <div class="user-dropdown" style="display: none;">
+                <a href="#" id="edit-profile">Edit Profile</a>
+                <a href="#" id="logout">Logout</a>
+            </div>
         </header>
 
-        <section id="coffeeTypes">
-            <h2>Coffee Types</h2>
-            <!-- Coffee items dynamically loaded -->
-        </section>
+        <main>
+            <div class="search-bar">
+                <input type="text" placeholder="⌕ Search">
+            </div>
 
-        <section id="promotions">
-            <h2>Promotions</h2>
-            <p>Today's Offer: Free Coffee Latte on orders above Rp. 200,000</p>
-        </section>
+            <div class="category-buttons">
+                <button class="category-btn active" data-category="coffee">Coffee</button>
+                <button class="category-btn" data-category="promotions">Promotions</button>
+                <button class="category-btn" data-category="customize">Customize</button>
+            </div>
 
-        <section id="customCoffee">
-            <h2>Customize Your Coffee</h2>
-            <!-- Customization options -->
-        </section>
+            <div id="coffee-content" class="category-content active">
+                <!-- Existing coffee products content -->
+            </div>
+
+            <div id="promotions-content" class="category-content">
+                <h2>Current Promotions</h2>
+                <div class="promotion-list">
+                    <div class="promotion-item">
+                        <img src="promo1.png" alt="Buy 1 Get 1 Free">
+                        <h3>Buy 1 Get 1 Free</h3>
+                        <p>On all Espresso drinks, every Monday!</p>
+                    </div>
+                    <div class="promotion-item">
+                        <img src="promo2.png" alt="Happy Hour">
+                        <h3>Happy Hour</h3>
+                        <p>50% off on Frappuccinos from 3PM to 5PM daily</p>
+                    </div>
+                    <!-- Add more promotion items as needed -->
+                </div>
+            </div>
+
+            <div id="customize-content" class="category-content">
+                <h2>Customize Your Coffee</h2>
+                <div class="customize-options">
+                    <div class="customize-section">
+                        <h3>Base</h3>
+                        <select id="coffee-base">
+                            <option value="espresso">Espresso</option>
+                            <option value="americano">Americano</option>
+                            <option value="latte">Latte</option>
+                            <option value="cappuccino">Cappuccino</option>
+                            <option value="mocha">Mocha</option>
+                            <option value="macchiato">Macchiato</option>
+                        </select>
+                    </div>
+                    <div class="customize-section">
+                        <h3>Milk</h3>
+                        <select id="milk-type">
+                            <option value="whole">Whole Milk</option>
+                            <option value="skim">Skim Milk</option>
+                            <option value="soy">Soy Milk</option>
+                            <option value="almond">Almond Milk</option>
+                            <option value="oat">Oat Milk</option>
+                            <option value="coconut">Coconut Milk</option>
+                        </select>
+                    </div>
+                    <div class="customize-section">
+                        <h3>Sugar</h3>
+                        <select id="sugar-percentage">
+                            <option value="0">No Sugar</option>
+                            <option value="25">25% Sugar</option>
+                            <option value="50">50% Sugar</option>
+                            <option value="75">75% Sugar</option>
+                            <option value="100">100% Sugar</option>
+                        </select>
+                    </div>
+                    <button id="create-custom-coffee" class="submit-btn">Create My Coffee</button>
+                </div>
+            </div>
+
+            <div class="dashboard-section">
+                <section class="featured-products">
+                    <div class="product">
+                        <img src="chai-latte.png" alt="Chai Latte">
+                        <div class="product-info">
+                            <h3>Chai Latte</h3>
+                            <p>₱85.00</p>
+                        </div>
+                        <button class="add-to-cart-btn">+</button>
+                    </div>
+                    <div class="product">
+                        <img src="matcha-latte.png" alt="Matcha Latte">
+                        <div class="product-info">
+                            <h3>Matcha Latte</h3>
+                            <p>₱120.00</p>
+                        </div>
+                        <button class="add-to-cart-btn">+</button>
+                    </div>
+                    <div class="product">
+                        <img src="red-eye-cold.png" alt="Red Eye Cold">
+                        <div class="product-info">
+                            <h3>Red Eye Cold</h3>
+                            <p>₱60.00</p>
+                        </div>
+                        <button class="add-to-cart-btn">+</button>
+                    </div>
+                    <div class="product">
+                        <img src="milk-shakes.png" alt="Milk Shakes">
+                        <div class="product-info">
+                            <h3>Milk Shakes</h3>
+                            <p>₱84</p>
+                        </div>
+                        <button class="add-to-cart-btn">+</button>
+                    </div>
+                </section>
+            </div>
+
+            <div class="dashboard-section">
+                <section class="product-list">
+                    <h2>Frozen Beverages <a href="#" class="see-all">See All</a></h2>
+                    <div class="product-grid">
+                        <div class="product">
+                            <img src="coffee-1.png" alt="Coffee">
+                            <div class="product-info">
+                                <h3>Coffee</h3>
+                                <p>₱100.00</p>
+                            </div>
+                            <button class="add-to-cart-btn">+</button>
+                        </div>
+                        <div class="product">
+                            <img src="coffee-2.png" alt="Coffee">
+                            <div class="product-info">
+                                <h3>Coffee</h3>
+                                <p>₱85.00</p>
+                            </div>
+                            <button class="add-to-cart-btn">+</button>
+                        </div>
+                        <div class="product">
+                            <img src="coffee-3.png" alt="Coffee">
+                            <div class="product-info">
+                                <h3>Coffee</h3>
+                                <p>₱60.00</p>
+                            </div>
+                            <button class="add-to-cart-btn">+</button>
+                        </div>
+                        <div class="product">
+                            <img src="coffee-4.png" alt="Coffee">
+                            <div class="product-info">
+                                <h3>Coffee</h3>
+                                <p>₱220.00</p>
+                            </div>
+                            <button class="add-to-cart-btn">+</button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="dashboard-section">
+                <section class="product-list">
+                    <h2>Kava and Bottled Beverages <a href="#" class="see-all">See All</a></h2>
+                    <div class="product-grid">
+                        <div class="product">
+                            <img src="coffee-5.png" alt="Coffee">
+                            <div class="product-info">
+                                <h3>Coffee</h3>
+                                <p>₱85.00</p>
+                            </div>
+                            <button class="add-to-cart-btn">+</button>
+                        </div>
+                        <div class="product">
+                            <img src="coffee-6.png" alt="Coffee">
+                            <div class="product-info">
+                                <h3>Coffee</h3>
+                                <p>₱122.00</p>
+                            </div>
+                            <button class="add-to-cart-btn">+</button>
+                        </div>
+                        <div class="product">
+                            <img src="coffee-7.png" alt="Coffee">
+                            <div class="product-info">
+                                <h3>Coffee</h3>
+                                <p>₱120.00</p>
+                            </div>
+                            <button class="add-to-cart-btn">+</button>
+                        </div>
+                        <div class="product">
+                            <img src="coffee-8.png" alt="Coffee">
+                            <div class="product-info">
+                                <h3>Coffee</h3>
+                                <p>₱140.00</p>
+                            </div>
+                            <button class="add-to-cart-btn">+</button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+        <div class="notification-panel" style="display: none;">
+            <p>No Notifications For Now</p>
+        </div>
     </div>
-
-    <!-- Profile Page -->
-    <div id="profilePage" class="page hidden">
-        <h1>Profile</h1>
-        <form id="profileForm">
-            <input type="text" id="username" placeholder="Username">
-            <input type="text" id="fullName" placeholder="Full Name">
-            <input type="date" id="birthdate" placeholder="Birthdate">
-            <input type="text" id="address" placeholder="Address">
-            <input type="tel" id="phoneNumber" placeholder="Phone Number">
-            <input type="email" id="profileEmail" placeholder="Email">
-            <button type="button" id="saveProfileBtn">Save</button>
-            <button type="button" onclick="goBackHome()">Back</button>
+    <div id="cart-container" style="display: none;">
+        <header>
+            <button id="return-to-dashboard" class="return-btn">Return to Menu</button>
+            <h1>Your Order</h1>
+        </header>
+        <main>
+            <div id="cart-items">
+                <!-- Cart items will be dynamically added here -->
+            </div>
+            <div class="cart-summary">
+                <p><span id="total-items">0</span> Items</p>
+                <p>Total: ₱<span id="total-price">0.00</span></p>
+            </div>
+            <button id="order-now-btn" class="order-btn">Order Now</button>
+        </main>
+    </div>
+    <div id="edit-profile-container" style="display: none;">
+        <h2>Edit Profile</h2>
+        <form id="edit-profile-form">
+            <input type="text" id="edit-name" placeholder="Name" required>
+            <input type="email" id="edit-email" placeholder="Email" required>
+            <input type="tel" id="edit-phone" placeholder="Phone" required>
+            <input type="text" id="edit-dob" placeholder="Date of Birth" required>
+            <button type="submit">Save Changes</button>
+            <button type="button" id="cancel-edit">Cancel</button>
         </form>
     </div>
-
-    <!-- Cart Page -->
-    <div id="cartPage" class="page hidden">
-        <h1>Your Cart</h1>
-        <!-- Cart items dynamically loaded -->
-        <button type="button" id="checkoutBtn">Proceed to Checkout</button>
-        <button type="button" onclick="goBackHome()">Back</button>
-    </div>
-
-    <!-- Checkout Page -->
-    <div id="checkoutPage" class="page hidden">
-        <h1>Payment Method</h1>
-        <button type="button" onclick="choosePayment('Cash')">Cash</button>
-        <button type="button" onclick="choosePayment('Bank Payment')">Bank Payment</button>
-        <button type="button" onclick="choosePayment('E-Wallet')">E-Wallet</button>
-    </div>
-
-    <!-- Confirmation Page -->
-    <div id="confirmationPage" class="page hidden">
-        <h1>Order Confirmed!</h1>
-        <p>Your order has been placed. Thank you!</p>
-        <button type="button" onclick="goToHome()">Back to Home</button>
-    </div>
-
     <script src="script.js"></script>
 </body>
 </html>

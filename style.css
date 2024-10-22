@@ -1,121 +1,752 @@
-/* General Styles */
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f5e9e2;
+    background-color: #f5f5f5;
 }
 
-/* Page Structure */
-.page {
-    display: none; /* Initially hide all pages */
+.container {
+    background-color: white;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    text-align: center;
+    width: 300px;
+    margin: 50px auto;
+}
+
+.logo {
+    width: 50px;
+    margin-bottom: 20px;
+}
+
+h1 {
+    margin: 0 0 10px;
+    color: #333;
+}
+
+p {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.password-container {
+    position: relative;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #999;
+}
+
+.forgot-password {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.forgot-password a {
+    color: #b8860b;
+    text-decoration: none;
+    font-size: 0.9em;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #5d4037;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.submit-btn::after {
+    content: '→';
+    background-color: #b8860b;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#toggle-form {
+    margin-top: 20px;
+    font-size: 0.9em;
+}
+
+#toggle-form a {
+    color: #b8860b;
+    text-decoration: none;
+}
+
+.social-icons {
+    margin-top: 20px;
+}
+
+.social-icons a {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin: 0 5px;
+    color: white;
+    font-size: 20px;
+    line-height: 40px;
+    text-decoration: none;
+}
+
+.facebook {
+    background-color: #3b5998;
+}
+
+.google {
+    background-color: #db4437;
+}
+
+/* Dashboard styles */
+#dashboard-container {
+    max-width: 1200px;
+    margin: 0 auto;
     padding: 20px;
 }
 
-.page.active {
-    display: block; /* Show the active page */
-}
-
-/* Header Styles */
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #6b4f3d;
-    padding: 10px;
-    color: white;
+    padding: 10px 20px;
+    background-color: white;
+    margin-bottom: 20px;
 }
 
-header input {
-    padding: 8px;
-    border: none;
-    border-radius: 5px;
-    width: 60%;
-}
-
-.icon {
-    cursor: pointer;
-    font-size: 24px;
-}
-
-/* Form Styles */
-form {
+.user-info {
     display: flex;
-    flex-direction: column;
     align-items: center;
 }
 
-input, button {
-    margin: 10px 0;
-    padding: 10px;
-    width: 80%;
-    border: 1px solid #c5b2a3;
-    border-radius: 5px;
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
 }
 
-button {
-    background-color: #6b4f3d;
+header .logo {
+    height: 40px;
+    width: auto;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+}
+
+.notification-container {
+    position: relative;
+    margin-right: 15px;
+}
+
+.notification-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #5d4037;
+}
+
+.notification-panel {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    padding: 10px;
+    z-index: 1000;
+    min-width: 200px;
+    margin-top: 5px;
+}
+
+.notification-panel p {
+    margin: 0;
+    color: #666;
+}
+
+.cart-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #5d4037;
+    margin-right: 15px;
+}
+
+.menu-toggle {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #5d4037;
+}
+
+.search-bar {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.search-bar input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+}
+
+/* Update the search bar styles (around line 159) */
+.search-bar {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.search-bar input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+}
+
+/* Update the header styles (around line 131) */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: white;
+    margin-bottom: 20px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+header .logo {
+    height: 40px;
+    width: auto;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+}
+
+.cart-btn, .menu-toggle {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    margin-left: 15px;
+    color: #5d4037;
+}
+
+/* Remove or comment out the old .cart-btn styles (around line 171-178) */
+
+/* Update the search bar styles (around line 159) */
+.search-bar {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.search-bar input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+}
+
+.featured-products, .product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.product {
+    background-color: white;
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    position: relative;
+}
+
+.product img {
+    width: 100%;
+    height: 120px; /* Reduced height */
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+
+.product h3 {
+    margin: 0 0 5px;
+    font-size: 0.9em;
+    color: #333;
+}
+
+.product p {
+    margin: 0;
+    font-size: 0.8em;
+    font-weight: bold;
+    color: #5d4037;
+}
+
+.product-list {
+    margin-bottom: 40px; /* Increased from 30px */
+}
+
+.product-list h2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 10px; /* Added padding */
+    border-bottom: 1px solid #e0e0e0; /* Added a subtle border */
+}
+
+.see-all {
+    color: #b8860b;
+    text-decoration: none;
+    font-size: 0.8em;
+}
+
+.product-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+
+@media (max-width: 768px) {
+    .featured-products, .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.dashboard-section {
+    margin-bottom: 60px; /* Adds more space between major sections */
+}
+
+/* Update or add these styles for the category buttons */
+.category-buttons {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.category-btn {
+    background-color: #f0f0f0;
+    border: none;
+    padding: 10px 20px;
+    margin-right: 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #333;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.category-btn:last-child {
+    margin-right: 0;
+}
+
+.category-btn.active {
+    background-color: #5d4037;
     color: white;
+}
+
+.category-btn:hover {
+    background-color: #e0e0e0;
+}
+
+.category-btn.active:hover {
+    background-color: #4a332d;
+}
+
+.product {
+    position: relative;
+}
+
+.add-to-cart-btn {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: #5d4037;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-to-cart-btn:hover {
+    background-color: #4a332d;
+}
+
+#cart-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f5f5f5;
+}
+
+#cart-container header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.return-btn {
+    background-color: #5d4037;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 20px;
     cursor: pointer;
 }
 
-button:hover {
-    background-color: #5b3d2e;
+.cart-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 8px;
 }
 
-/* Sections on Home Page */
-section {
-    margin: 20px 0;
+.cart-item-info {
+    flex-grow: 1;
+    margin-left: 10px;
 }
 
-h2 {
-    color: #5b3d2e;
-}
-
-p {
-    color: #5b3d2e;
-}
-
-/* Cart Page Styles */
-#cartPage ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-#cartPage ul li {
+.cart-summary {
     display: flex;
     justify-content: space-between;
-    padding: 10px 0;
-    border-bottom: 1px solid #ddd;
+    margin-top: 20px;
+    font-weight: bold;
 }
 
-/* Checkout Page */
-#checkoutPage button {
+.order-btn {
+    display: block;
     width: 100%;
-    margin: 10px 0;
-}
-
-/* Confirmation Page */
-#confirmationPage p {
-    text-align: center;
-}
-
-/* Back Button */
-button.back {
-    width: 80%;
-    background-color: #ccc;
-    color: black;
-    border: 1px solid #888;
-}
-
-button.back:hover {
-    background-color: #bbb;
-}
-
-/* Profile Update Notification */
-.notification {
-    text-align: center;
-    color: green;
+    background-color: #5d4037;
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-top: 20px;
     font-size: 16px;
-    margin: 20px 0;
+}
+
+.cart-item-quantity {
+    display: flex;
+    align-items: center;
+}
+
+.quantity-btn {
+    background-color: #5d4037;
+    color: white;
+    border: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 5px;
+}
+
+.quantity-btn:hover {
+    background-color: #4a332d;
+}
+
+.cart-item-quantity span {
+    font-weight: bold;
+    margin: 0 5px;
+}
+
+.category-content {
+    display: none;
+}
+
+.category-content.active {
+    display: block;
+}
+
+.promotion-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.promotion-item {
+    background-color: white;
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.promotion-item img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.customize-options {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.customize-section {
+    margin-bottom: 20px;
+}
+
+.customize-section h3 {
+    margin-bottom: 10px;
+}
+
+.customize-section select,
+.flavor-options {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.flavor-options label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+#create-custom-coffee {
+    margin-top: 20px;
+}
+
+/* Add these styles to your existing CSS */
+.user-dropdown {
+    position: absolute;
+    top: 60px;
+    left: 20px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    z-index: 1000;
+}
+
+.user-dropdown a {
+    display: block;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #333;
+}
+
+.user-dropdown a:hover {
+    background-color: #f5f5f5;
+}
+
+#edit-profile-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+#edit-profile-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+#edit-profile-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #5d4037;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+#edit-profile-form button[type="button"] {
+    background-color: #ccc;
+}
+
+.user-info {
+    cursor: pointer;
+}
+
+/* Add this to your existing CSS */
+#edit-profile-form input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Optional: Style the date input to look more consistent across browsers */
+#edit-profile-form input[type="date"]::-webkit-calendar-picker-indicator {
+    background: transparent;
+    bottom: 0;
+    color: transparent;
+    cursor: pointer;
+    height: auto;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: auto;
+}
+
+/* Update the date input styles */
+#edit-profile-form input[type="date"],
+#edit-profile-form input[type="text"]#edit-dob {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+#edit-profile-form input[type="date"]::-webkit-calendar-picker-indicator {
+    background: transparent;
+    bottom: 0;
+    color: transparent;
+    cursor: pointer;
+    height: auto;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: auto;
+}
+
+/* Add these styles to your existing CSS */
+.notification-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    margin-right: 15px;
+    color: #5d4037;
+}
+
+.notification-panel {
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    padding: 10px;
+    z-index: 1000;
+}
+
+.notification-panel p {
+    margin: 0;
+    color: #666;
+}
+
+/* Update or add these styles in your existing CSS */
+header {
+    position: relative;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.user-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 20px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    z-index: 1000;
+    min-width: 150px;
+    margin-top: 5px;
+}
+
+.user-dropdown a {
+    display: block;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #333;
+}
+
+.user-dropdown a:hover {
+    background-color: #f5f5f5;
 }
